@@ -9,4 +9,15 @@ class Service extends Model
 {
     /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'icon',
+        'hero_image',
+        'is_published',
+        'published_at',
+    ];
 }

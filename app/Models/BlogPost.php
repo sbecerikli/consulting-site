@@ -9,4 +9,15 @@ class BlogPost extends Model
 {
     /** @use HasFactory<\Database\Factories\BlogPostFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'cover_image',
+        'reading_time_minutes',
+        'is_published',
+        'published_at',
+    ];
 }
