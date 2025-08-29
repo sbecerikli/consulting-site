@@ -17,7 +17,13 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'author_name' => $this->faker->name(),
+            'author_title' => $this->faker->optional()->jobTitle(),
+            'company' => $this->faker->optional()->company(),
+            'photo' => null,
+            'content' => $this->faker->sentences(3, true),
+            'rating' => $this->faker->optional()->numberBetween(4, 5),
+            'is_published' => true,
         ];
     }
 }

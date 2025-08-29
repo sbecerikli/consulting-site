@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\TeamMember;
 
 class TeamMemberSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class TeamMemberSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        TeamMember::factory()->count(5)->create();
     }
 }

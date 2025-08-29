@@ -17,7 +17,16 @@ class TeamMemberFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'role' => $this->faker->jobTitle(),
+            'photo' => null,
+            'email' => $this->faker->companyEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'linkedin_url' => $this->faker->optional()->url(),
+            'twitter_url' => $this->faker->optional()->url(),
+            'github_url' => $this->faker->optional()->url(),
+            'display_order' => $this->faker->numberBetween(0, 50),
+            'is_active' => true,
         ];
     }
 }

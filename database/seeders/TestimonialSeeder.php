@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Testimonial;
 
 class TestimonialSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class TestimonialSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Testimonial::factory()->count(6)->create();
     }
 }
