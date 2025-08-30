@@ -1,20 +1,22 @@
+@section('title', __('app.page_titles.home'))
+
 <x-app-layout>
     <!-- Hero Section -->
     <div class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    Teknik Danışmanlık Çözümleri
+                    {{ __('app.hero_title') }}
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 text-blue-100">
-                    İşinizi büyütmek için uzman danışmanlık hizmetleri
+                    {{ __('app.hero_subtitle') }}
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ route('services.index') }}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                        Hizmetlerimiz
+                        {{ __('app.services') }}
                     </a>
                     <a href="{{ route('contact') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
-                        İletişime Geçin
+                        {{ __('app.contact') }}
                     </a>
                 </div>
             </div>
@@ -26,8 +28,8 @@
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Hizmetlerimiz</h2>
-                <p class="text-lg text-gray-600">Size özel çözümler sunuyoruz</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('app.services_title') }}</h2>
+                <p class="text-lg text-gray-600">{{ __('app.services_subtitle') }}</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($services as $service)
@@ -65,9 +67,9 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $service->title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ Str::limit($service->excerpt, 120) }}</p>
+                        <p class="text-gray-600 mb-4">{{ is_string($service->excerpt) ? Str::limit($service->excerpt, 120) : '' }}</p>
                         <a href="{{ route('services.show', $service->slug) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            Detayları Gör →
+                            {{ __('app.view_details') }} →
                         </a>
                     </div>
                 </div>
@@ -75,7 +77,7 @@
             </div>
             <div class="text-center mt-8">
                 <a href="{{ route('services.index') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
-                    Tüm Hizmetlerimizi Görün
+                    {{ __('app.view_details') }} {{ __('app.services') }}
                 </a>
             </div>
         </div>
@@ -87,8 +89,8 @@
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Sektör Uzmanlığımız</h2>
-                <p class="text-lg text-gray-600">Farklı sektörlerde edindiğimiz deneyim ve uzmanlık</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('app.sectors_title') }}</h2>
+                <p class="text-lg text-gray-600">{{ __('app.sectors_subtitle') }}</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($sectors as $sector)
@@ -133,16 +135,16 @@
                         @endif
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $sector->name }}</h3>
-                    <p class="text-sm text-gray-600 mb-3">{{ Str::limit($sector->title, 60) }}</p>
+                    <p class="text-sm text-gray-600 mb-3">{{ is_string($sector->title) ? Str::limit($sector->title, 60) : '' }}</p>
                     <div class="text-xs text-gray-500">
-                        {{ count($sector->services) }} Hizmet
+                        {{ count($sector->services) }} {{ __('app.services') }}
                     </div>
                 </div>
                 @endforeach
             </div>
             <div class="text-center mt-8">
                 <a href="{{ route('sectors.index') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300">
-                    Tüm Sektörlerimizi Görün
+                    {{ __('app.view_details') }} {{ __('app.sectors') }}
                 </a>
             </div>
         </div>
@@ -152,10 +154,10 @@
     <!-- CTA Section -->
     <div class="py-16 bg-blue-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Projeleriniz İçin Hazırız</h2>
-            <p class="text-xl text-blue-100 mb-8">Uzman ekibimizle birlikte hedeflerinize ulaşın</p>
+            <h2 class="text-3xl font-bold text-white mb-4">{{ __('app.cta_title') }}</h2>
+            <p class="text-xl text-blue-100 mb-8">{{ __('app.cta_subtitle') }}</p>
             <a href="{{ route('contact') }}" class="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100 transition duration-300">
-                İletişime Geçin
+                {{ __('app.contact') }}
             </a>
         </div>
     </div>

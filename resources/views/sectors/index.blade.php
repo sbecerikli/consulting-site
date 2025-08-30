@@ -1,3 +1,5 @@
+@section('title', __('app.page_titles.sectors'))
+
 <x-app-layout>
     <div class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
         <!-- Hero Section -->
@@ -5,10 +7,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div class="text-center">
                     <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                        Sektör Uzmanlığımız
+                        {{ __('app.sectors_hero_title') }}
                     </h1>
                     <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                        Farklı sektörlerde edindiğimiz deneyim ve uzmanlık ile şirketinizin büyüme hedeflerine ulaşmasına yardımcı oluyoruz.
+                        {{ __('app.sectors_hero_subtitle') }}
                     </p>
                 </div>
             </div>
@@ -98,7 +100,7 @@
                         <div class="flex items-center justify-between mb-3">
                             <h3 class="text-xl font-bold text-gray-900">{{ $sector->name }}</h3>
                             <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                {{ count($sector->services) }} Hizmet
+                                {{ count($sector->services) }} {{ __('app.services_count') }}
                             </span>
                         </div>
                         
@@ -106,7 +108,7 @@
                         
                         <!-- Services List -->
                         <div class="mb-6">
-                            <h4 class="text-sm font-semibold text-gray-900 mb-3">Sunduğumuz Hizmetler:</h4>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-3">{{ __('app.services_offered') }}:</h4>
                             <div class="flex flex-wrap gap-2">
                                 @foreach($sector->services as $service)
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
@@ -121,12 +123,12 @@
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                                 </svg>
-                                <span>Sektör Uzmanlığı</span>
+                                <span>{{ __('app.sector_expertise') }}</span>
                             </div>
                             
                             <a href="{{ route('contact') }}" 
                                class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                                Danışmanlık Al
+                                {{ __('app.get_consultancy') }}
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
@@ -143,14 +145,14 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div class="text-center">
                     <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                        Sektörünüzde Uzman Desteği Alın
+                        {{ __('app.cta_sectors_title') }}
                     </h2>
                     <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                        Deneyimli danışmanlarımız ile sektörünüzdeki fırsatları değerlendirin ve büyüme hedeflerinize ulaşın.
+                        {{ __('app.cta_sectors_subtitle') }}
                     </p>
                     <a href="{{ route('contact') }}" 
                        class="inline-flex items-center px-8 py-4 bg-white text-blue-600 text-lg font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                        Ücretsiz Danışmanlık Al
+                        {{ __('app.free_consultancy') }}
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>

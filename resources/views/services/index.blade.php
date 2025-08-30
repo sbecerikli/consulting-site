@@ -1,13 +1,15 @@
+@section('title', __('app.page_titles.services'))
+
 <x-app-layout>
     <!-- Hero Section -->
     <div class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    Hizmetlerimiz
+                    {{ __('app.services_hero_title') }}
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 text-blue-100">
-                    İşinizi büyütmek için özel olarak tasarlanmış çözümler
+                    {{ __('app.services_hero_subtitle') }}
                 </p>
             </div>
         </div>
@@ -20,7 +22,7 @@
                 <!-- Services Count -->
                 <div class="text-center mb-12">
                     <p class="text-lg text-gray-600">
-                        <span class="font-semibold text-blue-600">{{ $services->total() }}</span> hizmet bulundu
+                        <span class="font-semibold text-blue-600">{{ $services->total() }}</span> {{ __('app.services_found') }}
                     </p>
                 </div>
 
@@ -65,7 +67,7 @@
                                 <h3 class="text-xl font-bold text-gray-900">{{ $service->title }}</h3>
                                 @if($service->is_featured)
                                 <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                    Öne Çıkan
+                                    {{ __('app.featured') }}
                                 </span>
                                 @endif
                             </div>
@@ -88,7 +90,7 @@
                                 
                                 <a href="{{ route('services.show', $service->slug) }}" 
                                    class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                                    Detayları Gör
+                                    {{ __('app.view_details') }}
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                     </svg>

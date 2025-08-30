@@ -13,20 +13,34 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Ana Sayfa') }}
+                        {{ __('app.home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                        {{ __('Hakkımızda') }}
+                        {{ __('app.about') }}
                     </x-nav-link>
                     <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.*')">
-                        {{ __('Hizmetler') }}
+                        {{ __('app.services') }}
                     </x-nav-link>
                     <x-nav-link :href="route('sectors.index')" :active="request()->routeIs('sectors.index')">
-                        {{ __('Sektörler') }}
+                        {{ __('app.sectors') }}
                     </x-nav-link>
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                        {{ __('İletişim') }}
+                        {{ __('app.contact') }}
                     </x-nav-link>
+                </div>
+            </div>
+
+            <!-- Dil Değiştirme -->
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="flex items-center space-x-2">
+                    <a href="{{ route('language.switch', 'tr') }}" 
+                       class="px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 {{ app()->getLocale() === 'tr' ? 'bg-blue-600 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700' }}">
+                        TR
+                    </a>
+                    <a href="{{ route('language.switch', 'en') }}" 
+                       class="px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 {{ app()->getLocale() === 'en' ? 'bg-blue-600 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700' }}">
+                        EN
+                    </a>
                 </div>
             </div>
 
@@ -46,20 +60,34 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Ana Sayfa') }}
+                {{ __('app.home') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                {{ __('Hakkımızda') }}
+                {{ __('app.about') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('services.index')" :active="request()->routeIs('services.*')">
-                {{ __('Hizmetler') }}
+                {{ __('app.services') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sectors.index')" :active="request()->routeIs('sectors.index')">
-                {{ __('Sektörler') }}
+                {{ __('app.sectors') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                {{ __('İletişim') }}
+                {{ __('app.contact') }}
             </x-responsive-nav-link>
+        </div>
+
+        <!-- Responsive Dil Değiştirme -->
+        <div class="pt-4 pb-3 border-t border-gray-200 dark:border-gray-600">
+            <div class="flex justify-center space-x-4">
+                <a href="{{ route('language.switch', 'tr') }}" 
+                   class="px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 {{ app()->getLocale() === 'tr' ? 'bg-blue-600 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700' }}">
+                    TR
+                </a>
+                <a href="{{ route('language.switch', 'en') }}" 
+                   class="px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 {{ app()->getLocale() === 'en' ? 'bg-blue-600 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700' }}">
+                    EN
+                </a>
+            </div>
         </div>
     </div>
 </nav>

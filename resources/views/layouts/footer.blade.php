@@ -55,19 +55,19 @@
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-lg font-semibold mb-4">Hızlı Linkler</h3>
+                <h3 class="text-lg font-semibold mb-4">{{ __('app.quick_links') }}</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-white transition duration-300">Ana Sayfa</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-300 hover:text-white transition duration-300">Hakkımızda</a></li>
-                    <li><a href="{{ route('services.index') }}" class="text-gray-300 hover:text-white transition duration-300">Hizmetler</a></li>
-                    <li><a href="{{ route('sectors.index') }}" class="text-gray-300 hover:text-white transition duration-300">Sektörler</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-gray-300 hover:text-white transition duration-300">İletişim</a></li>
+                    <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-white transition duration-300">{{ __('app.home') }}</a></li>
+                    <li><a href="{{ route('about') }}" class="text-gray-300 hover:text-white transition duration-300">{{ __('app.about') }}</a></li>
+                    <li><a href="{{ route('services.index') }}" class="text-gray-300 hover:text-white transition duration-300">{{ __('app.services') }}</a></li>
+                    <li><a href="{{ route('sectors.index') }}" class="text-gray-300 hover:text-white transition duration-300">{{ __('app.sectors') }}</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-gray-300 hover:text-white transition duration-300">{{ __('app.contact') }}</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
             <div>
-                <h3 class="text-lg font-semibold mb-4">İletişim</h3>
+                <h3 class="text-lg font-semibold mb-4">{{ __('app.contact') }}</h3>
                 <div class="space-y-3">
                     <div class="flex items-start">
                         <svg class="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

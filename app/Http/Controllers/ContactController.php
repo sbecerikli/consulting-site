@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use App\Models\Newsletter;
 use App\Models\SiteSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -58,9 +59,39 @@ class ContactController extends Controller
             
             \Log::info('Contact message created', ['id' => $contactMessage->id]);
 
+            // E-posta adresini bülten aboneliğine ekle
+            try {
+                $existingNewsletter = Newsletter::where('email', $request->email)->first();
+                
+                if (!$existingNewsletter) {
+                    Newsletter::create([
+                        'email' => $request->email,
+                        'is_active' => true,
+                        'subscribed_at' => now(),
+                    ]);
+                    \Log::info('Newsletter subscription created for contact form user', ['email' => $request->email]);
+                } else {
+                    // Eğer zaten abone ise, aktif hale getir
+                    if (!$existingNewsletter->is_active) {
+                        $existingNewsletter->update([
+                            'is_active' => true,
+                            'subscribed_at' => now(),
+                            'unsubscribed_at' => null,
+                        ]);
+                        \Log::info('Newsletter subscription reactivated for contact form user', ['email' => $request->email]);
+                    }
+                }
+            } catch (\Exception $newsletterError) {
+                \Log::warning('Newsletter subscription failed for contact form user', [
+                    'email' => $request->email, 
+                    'error' => $newsletterError->getMessage()
+                ]);
+                // Newsletter hatası olsa bile contact form başarılı olmalı
+            }
+
             return response()->json([
                 'success' => true,
-                'message' => 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.'
+                'message' => 'Mesajınız başarıyla gönderildi. Ayrıca bülten aboneliğiniz de aktif edildi. En kısa sürede size dönüş yapacağız.'
             ]);
         } catch (\Exception $e) {
             \Log::error('Contact message creation failed', ['error' => $e->getMessage()]);

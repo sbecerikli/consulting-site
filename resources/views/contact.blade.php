@@ -1,13 +1,15 @@
+@section('title', __('app.page_titles.contact'))
+
 <x-app-layout>
     <!-- Hero Section -->
     <div class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    Bizimle İletişime Geçin
+                    {{ __('app.contact_hero_title') }}
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 text-blue-100">
-                    Projeleriniz için uzman danışmanlık hizmeti almak istiyorsanız, hemen iletişime geçin!
+                    {{ __('app.contact_hero_subtitle') }}
                 </p>
             </div>
         </div>
@@ -19,58 +21,58 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Contact Form -->
                 <div class="bg-white rounded-xl shadow-lg p-8">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Mesaj Gönderin</h2>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">{{ __('app.send_message') }}</h2>
                     
                     <form id="contactForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Ad Soyad *</label>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.full_name') }} *</label>
                                 <input type="text" id="name" name="name" required 
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                       placeholder="Adınız ve soyadınız">
+                                       placeholder="{{ __('app.name_placeholder') }}">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-posta *</label>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.email') }} *</label>
                                 <input type="email" id="email" name="email" required 
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                       placeholder="ornek@email.com">
+                                       placeholder="{{ __('app.email_placeholder') }}">
                             </div>
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.phone') }}</label>
                                 <input type="tel" id="phone" name="phone" 
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                       placeholder="+90 (5XX) XXX XX XX">
+                                       placeholder="{{ __('app.phone_placeholder') }}">
                             </div>
                             <div>
-                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Şirket</label>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.company') }}</label>
                                 <input type="text" id="company" name="company" 
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                       placeholder="Şirket adı">
+                                       placeholder="{{ __('app.company_placeholder') }}">
                             </div>
                         </div>
                         
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Konu *</label>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.subject') }} *</label>
                             <input type="text" id="subject" name="subject" required 
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                   placeholder="Mesaj konusu">
+                                   placeholder="{{ __('app.subject_placeholder') }}">
                         </div>
                         
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mesaj *</label>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">{{ __('app.message') }} *</label>
                             <textarea id="message" name="message" rows="6" required 
                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                      placeholder="Mesajınızı buraya yazın..."></textarea>
+                                      placeholder="{{ __('app.message_placeholder') }}"></textarea>
                         </div>
                         
                         <div id="formMessage" class="hidden"></div>
                         
                         <button type="submit" id="submitBtn" 
                                 class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-105 font-semibold text-lg">
-                            Mesaj Gönder
+                            {{ __('app.send_message') }}
                         </button>
                     </form>
                 </div>
@@ -78,7 +80,7 @@
                 <!-- Contact Information -->
                 <div class="space-y-6">
                     <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-8">İletişim Bilgileri</h2>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">{{ __('app.contact_info') }}</h2>
                         
                         <div class="space-y-6">
                             <div class="flex items-start space-x-4">
@@ -91,8 +93,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold text-gray-900 text-lg">Adres</h3>
-                                    <p class="text-gray-600 text-lg">{{ $settings->address ?? 'Adres bilgisi' }}</p>
+                                    <h3 class="font-semibold text-gray-900 text-lg">{{ __('app.address') }}</h3>
+                                    <p class="text-gray-600 text-lg">{{ $settings->address ?? __('app.address_info') }}</p>
                                 </div>
                             </div>
                             
@@ -105,8 +107,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold text-gray-900 text-lg">Telefon</h3>
-                                    <p class="text-gray-600 text-lg">{{ $settings->phone ?? 'Telefon bilgisi' }}</p>
+                                    <h3 class="font-semibold text-gray-900 text-lg">{{ __('app.phone') }}</h3>
+                                    <p class="text-gray-600 text-lg">{{ $settings->phone ?? __('app.phone_info') }}</p>
                                 </div>
                             </div>
                             
@@ -119,15 +121,15 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold text-gray-900 text-lg">E-posta</h3>
-                                    <p class="text-gray-600 text-lg">{{ $settings->email ?? 'E-posta bilgisi' }}</p>
+                                    <h3 class="font-semibold text-gray-900 text-lg">{{ __('app.email') }}</h3>
+                                    <p class="text-gray-600 text-lg">{{ $settings->email ?? __('app.email_info') }}</p>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Social Media -->
                         <div class="mt-8 pt-8 border-t border-gray-200">
-                            <h3 class="font-semibold text-gray-900 text-lg mb-4">Sosyal Medya</h3>
+                            <h3 class="font-semibold text-gray-900 text-lg mb-4">{{ __('app.social_media') }}</h3>
                             <div class="flex space-x-4">
                                 @if($settings->facebook_url && $settings->facebook_url !== '#')
                                     <a href="{{ $settings->facebook_url }}" target="_blank" class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition duration-200">
@@ -172,8 +174,8 @@
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Konum</h2>
-                <p class="text-lg text-gray-600">Ofisimizi haritada bulun ve ziyaret edin</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('app.location') }}</h2>
+                <p class="text-lg text-gray-600">{{ __('app.location_subtitle') }}</p>
             </div>
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div id="map" class="w-full h-96 rounded-lg"></div>
