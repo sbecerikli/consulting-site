@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_posts', function (Blueprint $table) {
+        Schema::create('sectors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('excerpt', 500)->nullable();
-            $table->text('body')->nullable();
-            $table->string('cover_image')->nullable();
-            $table->unsignedSmallInteger('reading_time_minutes')->nullable();
-            $table->boolean('is_published')->default(false);
+            $table->string('icon');
+            $table->text('description');
+            $table->json('services');
+            $table->string('color');
+            $table->boolean('is_published')->default(true);
+            $table->boolean('is_featured')->default(false);
+            $table->integer('sort_order')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_posts');
+        Schema::dropIfExists('sectors');
     }
 };

@@ -2,22 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ContactMessage extends Model
 {
-    /** @use HasFactory<\Database\Factories\ContactMessageFactory> */
-    use HasFactory;
-
     protected $fillable = [
         'name',
         'email',
         'phone',
+        'company',
         'subject',
         'message',
-        'source_page',
+        'is_read',
         'ip_address',
-        'read_at',
+        'source_page',
     ];
+
+    protected $casts = [
+        'is_read' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($message) {
+            $message->ip_address = request()->ip();
+            $message->source_page = 'contact';
+            $message->is_read = false;
+        });
+    }
 }

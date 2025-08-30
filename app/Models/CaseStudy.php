@@ -23,4 +23,11 @@ class CaseStudy extends Model
         'is_published',
         'published_at',
     ];
+
+    protected $casts = [
+        'published_at' => 'datetime',
+        'is_published' => 'boolean',
+        'started_at' => 'datetime',
+        'completed_at' => 'datetime',
+    ];
 }

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogPost;
 use App\Models\CaseStudy;
 use App\Models\Service;
+use App\Models\Sector;
 use App\Models\Testimonial;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $services = Service::query()->where('is_published', true)->orderBy('title')->limit(6)->get();
-        $posts = BlogPost::query()->where('is_published', true)->orderByDesc('published_at')->limit(3)->get();
-        $caseStudies = CaseStudy::query()->where('is_published', true)->orderByDesc('published_at')->limit(3)->get();
-        $testimonials = Testimonial::query()->where('is_published', true)->orderByDesc('created_at')->limit(6)->get();
+        $services = Service::where('is_published', true)->where('is_featured', true)->orderBy('title')->limit(6)->get();
+        $sectors = Sector::where('is_published', true)->where('is_featured', true)->orderBy('sort_order')->limit(4)->get();
 
-        return view('home', compact('services', 'posts', 'caseStudies', 'testimonials'));
+        return view('home', compact('services', 'sectors'));
     }
 }

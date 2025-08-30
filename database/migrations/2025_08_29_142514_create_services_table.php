@@ -17,8 +17,16 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('excerpt', 500)->nullable();
             $table->text('body')->nullable();
+            $table->string('image')->nullable();
             $table->string('icon')->nullable();
             $table->string('hero_image')->nullable();
+            $table->string('price')->nullable();
+            $table->string('price_type')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('delivery_time')->nullable();
+            $table->json('features')->nullable();
+            $table->json('process')->nullable();
+            $table->boolean('is_featured')->default(false);
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
