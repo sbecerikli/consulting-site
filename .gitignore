@@ -6,6 +6,7 @@
 .phpactor.json
 deploy.md
 .phpunit.result.cache
+*.sql
 /.fleet
 /.idea
 /.nova
